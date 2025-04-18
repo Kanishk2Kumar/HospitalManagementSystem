@@ -16,6 +16,15 @@ mongoose.connection.once('open', () => {
         bucketName: 'documents'
     });
 });
+// Get all documents
+router.get('/', async (req, res) => {
+    try {
+        const documents = await Document.find();
+        res.json(documents);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
 
 // Upload file
 router.post('/upload', upload.single('file'), async (req, res) => {

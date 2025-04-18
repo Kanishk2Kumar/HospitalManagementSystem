@@ -41,6 +41,11 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
+// Serve the documents page
+app.get('/documents', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views', 'documents.html'));
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
     console.error(err.stack);
